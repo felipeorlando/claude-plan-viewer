@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from 'node:url'
-import { dirname, join, resolve } from 'node:path'
+import { dirname, join, resolve, basename } from 'node:path'
 import { existsSync } from 'node:fs'
 import { createServer } from 'node:http'
 import { readdir, stat, readFile } from 'node:fs/promises'
@@ -17,15 +17,52 @@ function getArg(name, defaultValue) {
 }
 const hasFlag = (name) => args.includes(`--${name}`)
 
-const dir = resolve(getArg('dir', 'docs/plans'))
+if (hasFlag('help') || hasFlag('h')) {
+  console.log(`
+  Usage: claude-plan-viewer [--dir <path>] [--port <number>] [--no-open]
+
+  Options:
+    --dir <path>   Path to plans directory (default: auto-detect .claude/plans)
+    --port <number> Port to serve on (default: 3200)
+    --no-open       Don't open browser automatically
+    --help          Show this help message
+`)
+  process.exit(0)
+}
+
+// Auto-detect plans directory
+function findPlansDir() {
+  const explicit = getArg('dir', null)
+  if (explicit) return resolve(explicit)
+
+  const cwd = process.cwd()
+  const candidates = [
+    join(cwd, '.claude', 'plans'),
+    join(cwd, 'docs', 'plans'),
+  ]
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) return candidate
+  }
+
+  return null
+}
+
+const dir = findPlansDir()
 const port = parseInt(getArg('port', '3200'), 10)
 const noOpen = hasFlag('no-open')
 
-if (!existsSync(dir)) {
-  console.error(`Error: Directory not found: ${dir}`)
-  console.error(`Usage: claude-plans-viewer --dir <path-to-plans>`)
+if (!dir) {
+  console.error(`Error: No plans directory found.`)
+  console.error(`Looked for:`)
+  console.error(`  - .claude/plans`)
+  console.error(`  - docs/plans`)
+  console.error(``)
+  console.error(`Usage: claude-plan-viewer --dir <path-to-plans>`)
   process.exit(1)
 }
+
+const projectName = basename(process.cwd())
 
 const DATE_PREFIX_RE = /^(\d{4}-\d{2}-\d{2})-(.+)$/
 
@@ -99,7 +136,7 @@ const server = createServer(async (req, res) => {
     if (pathname === '/api/files' && req.method === 'GET') {
       const files = await scanDirectory(dir)
       res.writeHead(200, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify({ files }))
+      res.end(JSON.stringify({ files, projectName }))
       return
     }
 
@@ -145,9 +182,12 @@ const server = createServer(async (req, res) => {
 
 server.listen(port, async () => {
   const url = `http://localhost:${port}`
-  console.log(`\n  Claude Plans Viewer`)
-  console.log(`  Serving plans from: ${dir}`)
-  console.log(`  Running at: ${url}\n`)
+  console.log(``)
+  console.log(`  Claude Plan Viewer`)
+  console.log(`  Project: ${projectName}`)
+  console.log(`  Plans:   ${dir}`)
+  console.log(`  URL:     ${url}`)
+  console.log(``)
 
   if (!noOpen) {
     try {

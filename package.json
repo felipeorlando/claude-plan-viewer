@@ -1,19 +1,22 @@
 {
-  "name": "claude-plans-viewer",
+  "name": "claude-plan-viewer",
   "version": "0.1.0",
   "description": "A visual browser for Claude Code plan documents",
+  "license": "MIT",
   "type": "module",
   "bin": {
-    "claude-plans-viewer": "./bin/cli.mjs"
+    "claude-plan-viewer": "./bin/cli.mjs"
   },
   "files": [
     "bin/",
-    "dist/"
+    "dist/",
+    "LICENSE"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "node bin/cli.mjs --dir ../docs/plans"
+    "preview": "node bin/cli.mjs",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
@@ -48,7 +51,7 @@
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.6.1",
     "tailwindcss": "^4.2.2",
-"typescript": "^5.7.0",
+    "typescript": "^5.7.0",
     "vite": "^6.0.0",
     "wouter": "^3.3.0"
   }
