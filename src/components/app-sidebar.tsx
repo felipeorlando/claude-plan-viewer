@@ -48,21 +48,6 @@ export function AppSidebar({
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" render={<span />}>
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg">
-                <img src="/logo.svg" alt="Logo" className="size-8" />
-              </div>
-              <div className="flex flex-col gap-0.5 leading-none">
-                <span className="font-medium">{projectName}</span>
-                <span className="text-xs text-muted-foreground">
-                  {groups.reduce((acc, g) => acc + g.files.length, 0)} documents
-                </span>
-              </div>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-        <SidebarMenu>
-          <SidebarMenuItem>
             <SidebarMenuButton
               onClick={onOpenSearch}
               className="text-muted-foreground"
