@@ -8,6 +8,12 @@ A beautiful, local-first markdown viewer for browsing plan documents and design 
 
 Built with React, Tailwind CSS v4, and shadcn/ui.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/examples/dark.png" width="100%" />
+  <source media="(prefers-color-scheme: light)" srcset="public/examples/light.png" width="100%" />
+  <img src="public/examples/light.png" alt="Claude Plan Visualizer screenshot" width="100%" />
+</picture>
+
 ## Features
 
 - **Sidebar navigation** with date-grouped file listing and collapsible day sections
@@ -34,11 +40,11 @@ This starts a local server, opens your browser, and serves all `.md` files. It a
 
 ### Options
 
-| Flag | Default | Description |
-|------|---------|-------------|
-| `--dir <path>` | `docs/plans` | Directory containing `.md` files |
-| `--port <number>` | `3200` | Port to serve on |
-| `--no-open` | — | Don't auto-open the browser |
+| Flag              | Default      | Description                      |
+| ----------------- | ------------ | -------------------------------- |
+| `--dir <path>`    | `docs/plans` | Directory containing `.md` files |
+| `--port <number>` | `3200`       | Port to serve on                 |
+| `--no-open`       | —            | Don't auto-open the browser      |
 
 ## File naming convention
 
