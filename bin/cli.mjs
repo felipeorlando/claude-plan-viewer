@@ -19,7 +19,7 @@ const hasFlag = (name) => args.includes(`--${name}`)
 
 if (hasFlag('help') || hasFlag('h')) {
   console.log(`
-  Usage: claude-plan-viewer [--dir <path>] [--port <number>] [--no-open]
+  Usage: claude-plan-visualizer [--dir <path>] [--port <number>] [--no-open]
 
   Options:
     --dir <path>   Path to plans directory (default: auto-detect .claude/plans)
@@ -58,7 +58,7 @@ if (!dir) {
   console.error(`  - .claude/plans`)
   console.error(`  - docs/plans`)
   console.error(``)
-  console.error(`Usage: claude-plan-viewer --dir <path-to-plans>`)
+  console.error(`Usage: claude-plan-visualizer --dir <path-to-plans>`)
   process.exit(1)
 }
 
@@ -183,7 +183,7 @@ const server = createServer(async (req, res) => {
 server.listen(port, async () => {
   const url = `http://localhost:${port}`
   console.log(``)
-  console.log(`  Claude Plan Viewer`)
+  console.log(`  Claude Plan Visualizer`)
   console.log(`  Project: ${projectName}`)
   console.log(`  Plans:   ${dir}`)
   console.log(`  URL:     ${url}`)

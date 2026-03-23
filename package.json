@@ -1,11 +1,11 @@
 {
-  "name": "claude-plan-viewer",
+  "name": "claude-plan-visualizer",
   "version": "0.1.2",
   "description": "A visual browser for Claude Code plan documents",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "claude-plan-viewer": "./bin/cli.mjs"
+    "claude-plan-visualizer": "./bin/cli.mjs"
   },
   "files": [
     "bin/",

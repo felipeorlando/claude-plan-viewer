@@ -1,4 +1,4 @@
-# Contributing to Claude Plan Viewer
+# Contributing to Claude Plan Visualizer
 
 Thanks for your interest in contributing! This guide will help you get started.
 
@@ -12,8 +12,8 @@ Thanks for your interest in contributing! This guide will help you get started.
 ### Setup
 
 ```bash
-git clone https://github.com/felipeorlando/claude-plan-viewer.git
-cd claude-plan-viewer
+git clone https://github.com/felipeorlando/claude-plan-visualizer.git
+cd claude-plan-visualizer
 npm install
 ```
 
@@ -67,7 +67,7 @@ public/         # Static assets
 
 ### Reporting Bugs
 
-Use the [bug report template](https://github.com/felipeorlando/claude-plan-viewer/issues/new?template=bug_report.md) to file an issue. Include:
+Use the [bug report template](https://github.com/felipeorlando/claude-plan-visualizer/issues/new?template=bug_report.md) to file an issue. Include:
 
 - Steps to reproduce
 - Expected vs actual behavior
@@ -75,7 +75,7 @@ Use the [bug report template](https://github.com/felipeorlando/claude-plan-viewe
 
 ### Suggesting Features
 
-Use the [feature request template](https://github.com/felipeorlando/claude-plan-viewer/issues/new?template=feature_request.md) to propose ideas.
+Use the [feature request template](https://github.com/felipeorlando/claude-plan-visualizer/issues/new?template=feature_request.md) to propose ideas.
 
 ### Submitting Code
 

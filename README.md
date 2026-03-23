@@ -1,8 +1,8 @@
 <p>
-  <img src="public/logo.svg" width="200" alt="Claude Plan Viewer" />
+  <img src="public/logo.svg" width="200" alt="Claude Plan Visualizer" />
 </p>
 
-# Claude Plan Viewer
+# Claude Plan Visualizer
 
 A beautiful, local-first markdown viewer for browsing plan documents and design docs. Point it at any directory of `.md` files and get a clean reading experience with sidebar navigation, table of contents, full-text search, and syntax highlighting.
 
@@ -21,7 +21,7 @@ Built with React, Tailwind CSS v4, and shadcn/ui.
 ## Quick start
 
 ```bash
-npx claude-plan-viewer --dir ./my-docs
+npx claude-plan-visualizer --dir ./my-docs
 ```
 
 This starts a local server, opens your browser, and serves all `.md` files from the given directory.
